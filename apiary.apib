@@ -1,0 +1,73 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# 第一次尝试
+from urllib2 import Request, urlopen
+from urllib import urlencode
+
+values = urlencode(nonce=1392679609165&type=bid&order=8431d75e-a0fe-4cc6-8b9a-69af58515600)
+
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Rest-Key': '
+4948d49b-73d3-43e3-90ba-e1fde4b7a103',
+  'Rest-Sign': 'default1'
+}
+request = Request('https://private-d062ca-anxv2zhcn.apiary-proxy.com/api/2/currency_pair/money/order/result', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+
+{
+  "result": "success",
+  "data": {
+    "avg_cost": {
+      "currency": "BTC",
+      "display": "1.00000 BTC",
+      "display_short": "1.00 BTC",
+      "value": "1.00000",
+      "value_int": "100000"
+    },
+    "order_id": "7f986140-c49b-46f6-b927-5eb6ba75813f",
+    "total_amount": {
+      "currency": "ETH",
+      "display": "1.000000 ETH",
+      "display_short": "1 ETH",
+      "value": "1.000000",
+      "value_int": "100000000"
+    },
+    "total_spent": {
+      "currency": "BTC",
+      "display": "0.01000 BTC",
+      "display_short": "0.01 BTC",
+      "value": "0.01000",
+      "value_int": "1"
+    },
+    "trades": [
+      {
+        "amount": {
+          "currency": "ETH",
+          "display": "1.000000 ETH",
+          "display_short": "1 ETH",
+          "value": "1.000000",
+          "value_int": "1000000"
+        },
+        "currency": "BTC",
+        "date": "2018-03-03 16:22",
+        "item": "ETH",
+        "price": {
+          "currency": "BTC",
+          "display": "1.00000 BTC",
+          "display_short": "1.00 BTC",
+          "value": "1.00000",
+          "value_int": "100000"
+        },
+        "primary": "Y",
+        "properties": "market",
+        "trade_id": "4f88c40d-d278-4173-b900-df42f6511041",
+        "timestamp": "1393834930000",
+        "type": "bid"
+      }
+    ]
+  }
+}
